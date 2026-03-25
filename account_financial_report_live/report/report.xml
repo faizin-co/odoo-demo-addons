@@ -1,0 +1,47 @@
+<odoo>
+    <!-- QWeb template for PDF -->
+    <template id="financial_report_live_pdf">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <h2 t-esc="doc.get('title')"/>
+                <p>
+                    <strong>Period:</strong>
+                    <span t-esc="doc.get('date_from')"/> -
+                    <span t-esc="doc.get('date_to')"/>
+                </p>
+
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th class="text-end">Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="doc.get('lines', [])" t-as="l">
+                            <tr>
+                                <td>
+                                    <span t-att-style="'padding-left:%spx' % (l.get('level',0)*16)">
+                                        <t t-esc="l.get('name')"/>
+                                    </span>
+                                </td>
+                                <td class="text-end">
+                                    <t t-esc="l.get('balance')"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <!-- Report action -->
+    <record id="action_financial_report_live_pdf" model="ir.actions.report">
+        <field name="name">Financial Report Live (PDF)</field>
+        <field name="model">financial.report.live</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">account_financial_report_live.financial_report_live_pdf</field>
+        <field name="print_report_name">'FinancialReport_%s' % (object.id)</field>
+    </record>
+</odoo>

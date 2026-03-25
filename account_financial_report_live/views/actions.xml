@@ -1,0 +1,13 @@
+<odoo>
+    <record id="action_financial_report_live_pl" model="ir.actions.client">
+        <field name="name">Profit &amp; Loss (Live)</field>
+        <field name="tag">financial_report_live.action</field>
+        <field name="context">{'default_report_key': 'pl'}</field>
+    </record>
+
+    <record id="action_financial_report_live_bs" model="ir.actions.client">
+        <field name="name">Balance Sheet (Live)</field>
+        <field name="tag">financial_report_live.action</field>
+        <field name="context">{'default_report_key': 'bs'}</field>
+    </record>
+</odoo>

@@ -1,0 +1,31 @@
+<odoo>
+    <record id="view_fsm_order_form_calendar" model="ir.ui.view">
+        <field name="name">fsm.order.form.calendar</field>
+        <field name="model">fsm.order</field>
+        <field name="arch" type="xml">
+
+            <form string="Field Service Order">
+                <header>
+                    <button name="action_open_calendar_event"
+                            type="object"
+                            string="Calendar Event"
+                            class="btn-secondary"
+                            icon="fa-calendar"
+                            invisible="calendar_event_id == False"/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="scheduled_date_start"/>
+                        <field name="scheduled_date_end"/>
+                        <field name="person_id"/>
+                        <field name="location_id"/>
+                        <field name="calendar_event_id" invisible="1"/>
+                    </group>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+</odoo>

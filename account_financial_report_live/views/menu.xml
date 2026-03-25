@@ -1,0 +1,11 @@
+<odoo>
+    <menuitem id="menu_financial_report_live_pl"
+              name="Profit &amp; Loss (Live)"
+              parent="account.menu_finance_reports"
+              action="account_financial_report_live.action_financial_report_live_pl"/>
+
+    <menuitem id="menu_financial_report_live_bs"
+              name="Balance Sheet (Live)"
+              parent="account.menu_finance_reports"
+              action="account_financial_report_live.action_financial_report_live_bs"/>
+</odoo>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+  <t t-name="account_financial_report_live.ReportAction">
+    <div class="p-3">
+      <h2 class="mb-3">Financial Report Live</h2>
+
+      <t t-if="state.loading">
+        <div class="text-muted">Loading...</div>
+      </t>
+
+      <t t-else="">
+        <div class="card">
+          <div class="card-body p-0">
+            <table class="table table-sm table-hover m-0">
+              <thead>
+                <tr>
+                  <th class="p-2">Name</th>
+                  <th class="p-2 text-end">Balance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <t t-foreach="state.lines" t-as="line" t-key="line.id">
+                  <tr>
+                    <td class="p-2">
+                      <span t-att-style="'padding-left:%spx' % (line.level * 16)">
+                        <t t-if="line.unfoldable">
+                          <a href="#" t-on-click.prevent="() => onToggleUnfold(line)">
+                            <t t-esc="line.unfolded ? '▾' : '▸'"/>
+                          </a>
+                          <span class="me-1"/>
+                        </t>
+                        <t t-esc="line.name"/>
+                      </span>
+
+                      <!-- ✅ gunakan 'and' (bukan &&) supaya XML valid -->
+                      <t t-if="line.domain and line.domain.length">
+                        <a class="ms-2 text-decoration-none"
+                           href="#"
+                           title="Open Journal Items"
+                           t-on-click.prevent="() => onOpenJournalItems(line)">
+                          ↗
+                        </a>
+                      </t>
+                    </td>
+                    <td class="p-2 text-end">
+                      <t t-esc="line.balance"/>
+                    </td>
+                  </tr>
+                </t>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </t>
+    </div>
+  </t>
+
+</templates>

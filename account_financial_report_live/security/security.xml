@@ -1,0 +1,6 @@
+<odoo>
+    <record id="group_financial_report_live_user" model="res.groups">
+        <field name="name">Financial Report Live / User</field>
+        <!-- category_id sengaja dihapus agar tidak tergantung xmlid yang tidak ada -->
+    </record>
+</odoo>
